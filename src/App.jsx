@@ -1,54 +1,38 @@
-
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [messages, setMessages] = useState([]);
-  
-const [input, setInput] = useState('');
-  const messagesEndRef = useRef(null); // Corrected: messagesEndRef declaration
+  const [expression, setExpression] = useState('happy'); // Default expression
 
-  function scrollToBottom() {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (input.trim() !== '') {
-      setMessages([...messages, { text: input, sender: 'user' }]);
-      setInput('');
-
-      // Simulate a response from ChatGPT (replace with actual API call)
-      setTimeout(() => {
-        setMessages([...messages, { text: input, sender: 'user' }, { text: 'This is a simulated response.', sender: 'chatgpt' }]); 
-      }, 500); 
-    }
+  const handleExpressionChange = (newExpression) => {
+    setExpression(newExpression);
   };
 
   return (
     <div className="app">
-      <div className="chat-container">
-        {messages.map((message, index) => (
-          <div key={index} className={`message ${message.sender}`}>
-            {message.text}
-
-          </div>
-        ))}
-        <div ref={messagesEndRef} /> 
+      <div className="face">
+        <div className="eyes">
+          {/* Adjust eye shape based on expression */}
+          {expression === 'happy' && <div className="eye happy-eye"></div>}
+          {expression === 'sad' && <div className="eye sad-eye"></div>}
+          {expression === 'angry' && <div className="eye angry-eye"></div>}
+          {/* ... other expressions */}
+        </div>
+        <div className="mouth">
+          {/* Adjust mouth shape based on expression */}
+          {expression === 'happy' && <div className="mouth happy-mouth"></div>}
+          {expression === 'sad' && <div className="mouth sad-mouth"></div>}
+          {expression === 'angry' && <div className="mouth angry-mouth"></div>}
+          {/* ... other expressions */}
+        </div>
       </div>
-      <form className="input-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Type your message..."
-        />
-        <button type="submit">Send</button>
-      </form>
+
+      <div className="controls">
+        <button onClick={() => handleExpressionChange('happy')}>Happy</button>
+        <button onClick={() => handleExpressionChange('sad')}>Sad</button>
+        <button onClick={() => handleExpressionChange('angry')}>Angry</button>
+        {/* ... other expression buttons */}
+      </div>
     </div>
   );
 }

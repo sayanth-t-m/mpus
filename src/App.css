@@ -1,97 +1,83 @@
-body {
-  background-color: #181818; /* Dark background */
-  color: #fff; /* White text */
-  font-family: sans-serif;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
 .app {
-  width: 80%;
-  max-width: 600px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.chat-container {
-  padding: 20px;
-  background-color: #282c34; /* Darker background for chat area */
-  height: 400px;
-  overflow-y: auto;
-}
-
-.message {
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  max-width: 80%;
-}
-
-.user {
-  background-color: #3498db; /* Blue for user messages */
-  align-self: flex-end;
-}
-
-.chatgpt {
-  background-color: #2ecc71; /* Green for ChatGPT messages */
-  align-self: flex-start;
-}
-
-.input-form {
   display: flex;
-  padding: 20px;
-  background-color: #333; /* Darker background for input area */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.input-form input {
-  flex: 1;
-  padding: 10px;
+.face {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #ffe0bd; /* Skin color */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.eyes {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.eye {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #000; /* Eye color */
+}
+
+/* Eye styles for different expressions */
+.happy-eye {
+  /* ... */
+}
+
+.sad-eye {
+  /* ... */
+}
+
+.angry-eye {
+  /* ... */
+}
+
+/* ... other eye styles */
+
+.mouth {
+  width: 40px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #000; /* Mouth color */
+}
+
+/* Mouth styles for different expressions */
+.happy-mouth {
+  transform: rotate(180deg); /* Smile */
+}
+
+.sad-mouth {
+  /* ... */
+}
+
+.angry-mouth {
+  /* ... */
+}
+
+/* ... other mouth styles */
+
+.controls {
+  margin-top: 20px;
+}
+
+.controls button {
+  padding: 8px 16px;
+  margin: 0 5px;
   border: none;
   border-radius: 5px;
-  margin-right: 10px;
-}
-
-.input-form button {
-  padding: 10px 20px;
   background-color: #3498db;
-  color
-: #fff;
-  border: none;
-  border-radius: 5px;
+  color: #fff;
   cursor: pointer;
-}
-
-/* Add animation for new messages */
-.message.user {
-  animation: slideInRight 0.5s ease-in-out;
-}
-
-.message.chatgpt {
-  animation: slideInLeft 0.5s ease-in-out;
-}
-
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
 }
